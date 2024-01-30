@@ -102,7 +102,8 @@ const rotate = (angle,x,y,children) =>{
     return `<g transform="rotate(${angle},${x},${y})">${children}</g>`;
 }
 
-const scale = (x,y,children) =>{
+const scale = (x,y=x,children) =>{
+    console.log(`<g transform="scale(${x},${y})">${children}</g>`)
     return `<g transform="scale(${x},${y})">${children}</g>`;
 }
 
@@ -143,9 +144,9 @@ const recreateSvg = () =>{
 }
 
 const varyOneSvg = () =>{
-  return `<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 118 120">
+  return `<svg width="200%" height="=200%" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 100 100">
     <g id='backdrop'>
-     ${square(0,0,150,'none','#efeeec')};
+     ${square(0,0,1500,'none','#efeeec')};
     </g>
     <g id='squares'>
       <g id='background'>
@@ -168,9 +169,11 @@ const varyOneSvg = () =>{
 }
 
 
-window.onload = () =>{
-  const theSvg = varyOneSvg();
-  console.log(theSvg);
-  document.querySelector('svg').outerHTML = theSvg;  
+// window.onload = () =>{
+//   const theSvg = varyOneSvg();
+//   console.log(theSvg);
+//   document.querySelector('svg').outerHTML = theSvg;  
 
-};
+// };
+
+export {rect, circle, ellipse, triangle, equalTriangle, polygon, line, square, polyline, path, rotate, scale, translate, opacity};
