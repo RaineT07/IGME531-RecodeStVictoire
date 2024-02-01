@@ -74,8 +74,6 @@ const triangle = (x1,y1,x2,y2,x3,y3,stroke='none',fill) =>{
 const equalTriangle = (x,y,width,stroke='none',fill) =>{
   let cx = x;
   let cy = y;
-  let points = ",cy-width/2, cx+width/2,cy+width/2, cx-width/2,cy+width/2";
-
 
   return `<polygon points="${cx},${cy-width/2},${cx+width/2},${cy+width/2},${cx-width/2},${cy+width/2}" stroke="${stroke}" fill="${fill}"/>`;
 }
@@ -86,8 +84,8 @@ const polygon = (points,stroke='none',fill) =>{
 const line = (x1,y1,x2,y2,stroke) =>{
     return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${stroke}"/>`;
 }
-const square = (x,y,width,stroke='none',fill) =>{
-    return `<rect x="${x}" y="${y}" width="${width}" height="${width}" stroke="${stroke}" fill="${fill}"/>`;
+const square = (x,y,width,stroke='none',fill, stroke_width='1') =>{
+    return `<rect x="${x}" y="${y}" width="${width}" height="${width}" stroke="${stroke}" fill="${fill}" stroke-width="${stroke_width}"/>`;
 }
 
 const polyline = (points,stroke,fill) =>{
