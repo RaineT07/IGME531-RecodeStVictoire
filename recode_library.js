@@ -78,6 +78,26 @@ const equalTriangle = (x,y,width,stroke='none',fill) =>{
   return `<polygon points="${cx},${cy-width/2},${cx+width/2},${cy+width/2},${cx-width/2},${cy+width/2}" stroke="${stroke}" fill="${fill}"/>`;
 }
 
+const pentagon = (centerX, centerY, size, stroke, fill, stroke_width) =>{
+  let points = [];
+  let end = '';
+  for(let i=0; i<6; i++){
+    let angle = (i*2*Math.PI)/5;
+    let coords = polarToCartesian(size, angle);
+    coords[0]+=centerX;
+    coords[1]+=centerY;
+    points.push(`${coords[0]},${coords[1]}`);
+    if(i==0){
+      end=`${coords[0]},${coords[1]}`;
+    }
+  }
+  points.join(' ');
+  // points+=end;
+  console.log(points);
+  // console.log(`<polyline points="${points}" stroke="${stroke}" fill="${fill}" stroke-width:${stroke_width}/>`);
+  return `<polyline points="${points}" stroke="${stroke}" fill="${fill}" stroke-width:${stroke_width}/>`;
+}
+
 const polygon = (points,stroke='none',fill) =>{
     return `<polygon points="${points}" stroke="${stroke}" fill="${fill}"/>`;
 }
@@ -111,6 +131,12 @@ const translate = (x,y,children) =>{
 
 const opacity = (opacity,children) =>{
     return `<g opacity="${opacity}">${children}</g>`;
+}
+
+const polarToCartesian = (magnitude,directionAngle) =>{
+  let x=magnitude * Math.cos(directionAngle);
+  let y=magnitude * Math.sin(directionAngle);
+  return [x,y];
 }
 
 
@@ -174,4 +200,4 @@ const varyOneSvg = () =>{
 
 // };
 
-export {rect, circle, ellipse, triangle, equalTriangle, polygon, line, square, polyline, path, rotate, scale, translate, opacity};
+export {rect, circle, ellipse, triangle, equalTriangle, pentagon, polygon, line, square, polyline, path, rotate, scale, translate, opacity, polarToCartesian};
