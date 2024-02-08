@@ -101,8 +101,8 @@ const pentagon = (centerX, centerY, size, stroke, fill, stroke_width) =>{
 const polygon = (points,stroke='none',fill) =>{
     return `<polygon points="${points}" stroke="${stroke}" fill="${fill}"/>`;
 }
-const line = (x1,y1,x2,y2,stroke) =>{
-    return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${stroke}"/>`;
+const line = (x1,y1,x2,y2,stroke, stroke_width) =>{
+    return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${stroke}" stroke-width="${stroke_width}"/>`;
 }
 const square = (x,y,width,stroke='none',fill, stroke_width='1') =>{
     return `<rect x="${x}" y="${y}" width="${width}" height="${width}" stroke="${stroke}" fill="${fill}" stroke-width="${stroke_width}"/>`;
@@ -137,6 +137,17 @@ const polarToCartesian = (magnitude,directionAngle) =>{
   let x=magnitude * Math.cos(directionAngle);
   let y=magnitude * Math.sin(directionAngle);
   return [x,y];
+}
+
+const hslToHex = (h, s, l) => {
+  l /= 100;
+  const a = s * Math.min(l, 1 - l) / 100;
+  const f = n => {
+    const k = (n + h / 30) % 12;
+    const color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+    return Math.round(255 * color).toString(16).padStart(2, '0');
+  };
+  return `#${f(0)}${f(8)}${f(4)}`;
 }
 
 
@@ -200,4 +211,22 @@ const varyOneSvg = () =>{
 
 // };
 
-export {rect, circle, ellipse, triangle, equalTriangle, pentagon, polygon, line, square, polyline, path, rotate, scale, translate, opacity, polarToCartesian};
+export {rect, 
+  circle, 
+  ellipse, 
+  triangle, 
+  equalTriangle, 
+  pentagon, 
+  polygon, 
+  line, 
+  square, 
+  polyline, 
+  path, 
+  rotate, 
+  scale, 
+  translate, 
+  opacity, 
+  polarToCartesian, 
+  hslToHex, 
+  recreateSvg, 
+  varyOneSvg};
