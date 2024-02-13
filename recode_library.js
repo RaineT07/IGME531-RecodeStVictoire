@@ -116,6 +116,11 @@ const path = (d,stroke,fill) =>{
     return `<path d="${d}" stroke="${stroke}" fill="${fill}"/>`;
 }
 
+const bezier = ([startX, startY], [controlX, controlY], [controlX2, controlY2], [endX, endY], stroke, fill=
+  'none') =>{
+  return `<path d="M ${startX} ${startY} C ${controlX} ${controlY} ${controlX2} ${controlY2} ${endX} ${endY}" stroke="${stroke}" fill="${fill}"/>`;
+  }
+
 const rotate = (angle,x,y,children) =>{
     return `<g transform="rotate(${angle},${x},${y})">${children}</g>`;
 }
@@ -222,6 +227,7 @@ export {rect,
   square, 
   polyline, 
   path, 
+  bezier,
   rotate, 
   scale, 
   translate, 

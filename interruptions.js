@@ -22,7 +22,7 @@ const interruptions = () =>{
             let centerY = y*5;
             let randRotate = Math.floor(Math.random()* ( 360 - (-360) + 1) + (-360));
             console.log(noise.simplex2(x,y))
-            if(noise.simplex2(x,y) > 0.37){
+            if(noise.simplex2(x/30,y/30) > -0.65){
                 lineset += lib.rotate(randRotate, centerX, centerY, 
                     lib.line(centerX, centerY-length/2, centerX, centerY+length/2, '#000000', 0.5));
             }

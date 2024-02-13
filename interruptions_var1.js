@@ -24,10 +24,10 @@ const interruptions = () =>{
             let centerX = x*5;
             let centerY = y*5;
             let randRotate = Math.floor(Math.random()* ( 360 - (-360) + 1) + (-360));
-            let hue = NumMap(noise.simplex2(x,y), -1, 1, 0, 360);
-            let color = lib.hslToHex(hue, 100, 50);
+            let hue = NumMap(noise.simplex2(x,y), -1, 1, 180, 270);
+            let color = lib.hslToHex(hue, 100, NumMap(noise.simplex2(x,y), -1, 1, 50,100));
             console.log(noise.simplex2(x,y))
-            if(noise.simplex2(x,y) > 0.37){
+            if(noise.simplex2(x/30,y/30) > -0.57){
                 lineset += lib.rotate(randRotate, centerX, centerY, 
                     lib.line(centerX, centerY-length/2, centerX, centerY+length/2, color, 0.8));
             }
