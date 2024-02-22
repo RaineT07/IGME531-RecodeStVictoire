@@ -110,22 +110,22 @@ const drawGrid = (xMin, xMax,yMin, yMax, stroke) =>{
 }
 
 const penPlotter = () =>{    
-    let svgStr = '<svg width="55%" height="55%" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 500 500" style="background-color: #efeeec;">';
+    let svgStr = '<svg width="80%" height="80%" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1100 1100" style="background-color: #efeeec;">';
     let drawing = '';
     let grid = '';
     // drawing += lib.square(100,100,200,'#000000','none', 1.5);
     // let tileDraw = tile4(100, 100);
     // drawing+= tileDraw;
     
-
+    let tileGroup = [[tile1,tile2],[tile3,tile4]]
     
     // console.log(`x: ${x*50} y: ${y*50} tile: ${randTile} rotate: ${90*randRotate}`)
-    drawing += lib.line(-50, -50, 0, 0, '#000000', 1.5);
-    drawing += lib.line(-50, 0, 0, -50, '#000000', 1.5);
-    grid = drawGrid(0,2,0,2, '#0000FF');
-    drawing += grid
-    drawing += drawGrid(0.5, 1.5, 0.5, 1.5, '#FF0000');
-    drawing = lib.translate(100,100, drawing);
+    for(let x=0;x<=1;x++){
+        for(let y=0;y<=1;y++){
+                drawing+= lib.square(x*100,y*100,100,'#000000','none');
+            drawing+=tileGroup[x][y](x*100, y*100, '#000000');
+        }
+    }
         
     
     svgStr += drawing + '</svg>';
@@ -137,11 +137,4 @@ window.onload = () =>{
     const customSvg = penPlotter();
     // console.log(customSvg);
     document.querySelector('svg').outerHTML = customSvg;
-
 }
-
-let plot = d3.select('svg').select('g');
-plot.selectAll('g').each(function() {
-    let g = d3.select(this);
-    console.log(g);
-});

@@ -110,7 +110,7 @@ const drawGrid = (xMin, xMax,yMin, yMax, stroke) =>{
 }
 
 const penPlotter = () =>{    
-    let svgStr = '<svg width="55%" height="55%" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1100 1100" style="background-color: #efeeec;">';
+    let svgStr = '<svg width="45%" height="45%" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1100 1100" style="background-color: #efeeec;">';
     let drawing = '';
     let grid = '';
     // drawing += lib.square(100,100,200,'#000000','none', 1.5);
@@ -122,7 +122,7 @@ const penPlotter = () =>{
     // console.log(`x: ${x*50} y: ${y*50} tile: ${randTile} rotate: ${90*randRotate}`)
     grid = drawGrid(0,10,0,10, '#0000FF');
     drawing += grid
-    drawing += drawGrid(0.5, 9.5, 0.5, 9.5, '#FF0000');
+    drawing += drawGrid(0.5, 9.5, 0.5, 9.5, '#0000FF');
         
     
     svgStr += drawing + '</svg>';
